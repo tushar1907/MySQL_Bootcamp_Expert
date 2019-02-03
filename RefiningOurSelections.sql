@@ -85,3 +85,7 @@ select title from books order by title desc;
 
 select title, pages, released_year from books order by 1 limit 3;
 
+select title, pages, released_year from books order by 1 limit 10;
+
+
+

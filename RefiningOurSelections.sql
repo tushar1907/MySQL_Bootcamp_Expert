@@ -83,9 +83,15 @@ select distinct author_lname from books order by author_lname;
 
 select title from books order by title desc;
 
-select title, pages, released_year from books order by 1 limit 3;
+select title, pages, released_year from books order by 3 desc limit 3;
+
+SELECT title, released_year FROM books ORDER BY released_year DESC LIMIT 1,3;
 
 select title, pages, released_year from books order by 1 limit 10;
+
+select title,author_fname from books where author_fname like '%da%';
+
+select title,author_fname from books where author_fname like 'Da%';
 
 
 

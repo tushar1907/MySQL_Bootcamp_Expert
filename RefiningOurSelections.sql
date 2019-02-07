@@ -93,6 +93,10 @@ select title,author_fname from books where author_fname like '%da%';
 
 select title,author_fname from books where author_fname like 'Da%';
 
+-------------------------------------------------------------
+
+select * from books where title like '%\_%';
+
 
 
 

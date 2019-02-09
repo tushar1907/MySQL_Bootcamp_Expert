@@ -26,3 +26,26 @@ SELECT MAX(pages), title
 FROM books;
 
 select * from books where pages = (select min(pages) from books);
+
+select author_fname, author_lname, min(released_year) 
+from books
+group by author_lname, author_fname order by 3 desc limit 1;
+
+select author_fname, author_lname, max(pages) 
+from books
+group by author_lname, author_fname;
+
+select concat(author_fname,' ',author_lname) as Author, max(pages) 
+from books
+group by author_lname, author_fname;
+
+select sum(pages) from books;
+
+select sum(pages) as "Pages Written" from books group by author_fname, author_lname;
+
+select avg(released_year) from books;
+
+select released_year, avg(stock_quantity) from books group by released_year;
+
+SELECT author_fname, author_lname, AVG(pages) FROM books
+GROUP BY author_lname, author_fname;

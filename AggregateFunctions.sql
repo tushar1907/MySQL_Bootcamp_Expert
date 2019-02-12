@@ -49,3 +49,14 @@ select released_year, avg(stock_quantity) from books group by released_year;
 
 SELECT author_fname, author_lname, AVG(pages) FROM books
 GROUP BY author_lname, author_fname;
+
+select author_fname,author_lname,count(*) from books group by released_year;
+
+select author_fname,author_lname,avg(released_year) from books group by author_fname,author_lname;
+
+SELECT released_year AS year,
+    COUNT(*) AS '# of books',
+    AVG(pages) AS 'avg pages'
+FROM books
+    GROUP BY released_year;
+

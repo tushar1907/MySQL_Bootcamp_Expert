@@ -1,3 +1,5 @@
+use sakila;
+
 CREATE TABLE dogs (name CHAR(5), breed VARCHAR(10));
  
 INSERT INTO dogs (name, breed) VALUES ('bob', 'beagle');
@@ -40,4 +42,10 @@ SELECT * FROM thingies;
 INSERT INTO thingies(price) VALUES (8877665544.45);
  
 SELECT * FROM thingies;
+
+insert into people1 (name, bdate, btime, bDateTime) values('tushar','1983-11-11','10:07:35','1983-11-11 10:07:35');
+
+insert into people1 (name, bdate, btime, bDateTime) values('Suman',current_date(),current_time(),now());
+
+select * from people1;
 

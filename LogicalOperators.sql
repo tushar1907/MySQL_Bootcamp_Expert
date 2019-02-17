@@ -78,3 +78,25 @@ SELECT title, stock_quantity,
         ELSE '***'
     END AS STOCK
 FROM books; 
+
+SELECT title, author_lname FROM books
+WHERE author_lname IN ('Carver', 'Lahiri', 'Smith');
+
+SELECT 
+    title, 
+    author_lname,
+    CASE
+        WHEN title LIKE '%stories%' THEN 'Short Stories'
+        WHEN title = 'Just Kids' OR title = 'A Heartbreaking Work of Staggering Genius' THEN 'Memoir'
+        ELSE 'Novel'
+    END AS TYPE
+FROM books;
+
+Select
+	title,
+    author_lname,
+    CASE
+		when count(*) = 1 then '1 book'
+        when count(*) >1 then concat(count(*),' books')
+        end as Count
+	from books group by author_lname, author_fname;

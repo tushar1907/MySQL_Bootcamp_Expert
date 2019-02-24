@@ -88,8 +88,39 @@ left join reviews
 				on series.id = reviews.series_id group by genre;                
                 
 -- Challege 6
-
-select first_name, last_name, count(rating) as 'COUNT',Ifnull(Min(rating), 0) as 'MIN',Ifnull(Max(rating), 0) as 'MAX',Round(Ifnull(Avg(rating), 0), 2) as 'AVG',
+select 
+first_name, 
+last_name, 
+count(rating) as 'COUNT',
+Ifnull(Min(rating), 0) as 'MIN',
+Ifnull(Max(rating), 0) as 'MAX',
+Round(Ifnull(Avg(rating), 0), 2) as 'AVG',
 IF(Count(rating) > 0, 'ACTIVE', 'INACTIVE') as 'STATUS'
 from reviewers left join reviews on reviewers.id = reviews.reviewer_id group by reviewers.id;
-    
+
+SELECT 
+	first_name, 
+	last_name, 
+	Count(rating)                    AS COUNT, 
+	Ifnull(Min(rating), 0)           AS MIN, 
+	Ifnull(Max(rating), 0)           AS MAX, 
+	Round(Ifnull(Avg(rating), 0), 2) AS AVG, 
+	CASE 
+	 WHEN Count(rating) >= 10 THEN 'POWER USER' 
+	 WHEN Count(rating) > 0 THEN 'ACTIVE' 
+	 ELSE 'INACTIVE' 
+	end                              AS STATUS 
+FROM   reviewers 
+       LEFT JOIN reviews 
+              ON reviewers.id = reviews.reviewer_id 
+GROUP  BY reviewers.id; 
+
+
+-- Challenge 7
+
+select title, rating, concat(first_name,' ', last_name) as 'Name' from series
+inner join reviews 
+	on series.id = reviews.reviewer_id
+inner join reviewers
+	on reviewers.id = reviews.series_id
+    order by title;

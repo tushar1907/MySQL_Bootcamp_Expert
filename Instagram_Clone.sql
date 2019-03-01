@@ -85,3 +85,10 @@ select * from users;
 select username from users order by created_at limit 5;
 
 select count(*) as COUNT,dayname(created_at) from users group by dayname(created_at) order by COUNT desc limit 2;
+
+select username from users 
+left join photos on photos.user_id = users.id where photos.user_id is null;
+
+select count(*) as COUNT, username, photos.image_url from photos 
+inner join likes on likes.photo_id = photos.id 
+inner join users on users.id = photos.user_id group by likes.photo_id order by COUNT desc limit 1;

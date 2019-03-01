@@ -81,5 +81,7 @@ INSERT INTO photo_tags(photo_id, tag_id) VALUES (1, 18), (1, 17), (1, 21), (1, 1
 
 select * from comments;
 select * from users;
-
+  
 select username from users order by created_at limit 5;
+
+select count(*) as COUNT,dayname(created_at) from users group by dayname(created_at) order by COUNT desc limit 2;

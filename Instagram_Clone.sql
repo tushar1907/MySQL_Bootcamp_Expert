@@ -92,3 +92,5 @@ left join photos on photos.user_id = users.id where photos.user_id is null;
 select count(*) as COUNT, username, photos.image_url from photos 
 inner join likes on likes.photo_id = photos.id 
 inner join users on users.id = photos.user_id group by likes.photo_id order by COUNT desc limit 1;
+
+select ((select count(*) from photos)/(select count(*) from users)) as avg;

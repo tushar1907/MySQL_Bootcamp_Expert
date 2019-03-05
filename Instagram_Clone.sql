@@ -94,3 +94,16 @@ inner join likes on likes.photo_id = photos.id
 inner join users on users.id = photos.user_id group by likes.photo_id order by COUNT desc limit 1;
 
 select ((select count(*) from photos)/(select count(*) from users)) as avg;
+
+select count(*) as COUNT,tag_name
+from photo_tags
+	inner join tags 
+		on tags.id = photo_tags.tag_id 
+        group by tag_name order by COUNT desc limit 5;
+        
+select username, count(*) as LIKES
+from users
+	inner join likes on users.id = likes.user_id
+    group by likes.user_id
+    having LIKES = (select count(*) from photos);
+
